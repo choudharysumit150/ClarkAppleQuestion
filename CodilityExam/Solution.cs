@@ -17,15 +17,22 @@ namespace CodilityExam
             {
                 return -1;
             }
+
+            // Check who is going to pick more trees (Alice or Bob)
             int moreTrees = K>L ?K: L;
             int lessTrees = K > L ? L : K;
 
+            //FirstPerson = who will pick up maximum trees
             int[] firstPesron = getMaxContigousArrayForFirstPerson(A, moreTrees);
+
             int maxAppleFetchByFirstPerson = firstPesron[0];
+
+            //Index from where the maximum number of apples picked by person one.
             int indexofMaxByFirstPerson = firstPesron[1];
 
             Console.WriteLine("Maximum Apple Pluck by Frist Perosn : " + maxAppleFetchByFirstPerson);
             Console.WriteLine("Index where first person fonnd max :" + indexofMaxByFirstPerson);
+
             int[] secondPesron =getMaxContigousArrayForSecondPerson(A, lessTrees, moreTrees, indexofMaxByFirstPerson);
             int maxAppleFetchBySecondPerson = secondPesron[0];
             int indexofMaxBySecondPerson = secondPesron[1];
@@ -35,12 +42,22 @@ namespace CodilityExam
             return maxAppleFetchBySecondPerson + maxAppleFetchByFirstPerson;
         }
 
+
+        /// <summary>
+        /// Checking if need to search the before and after the index.
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="numberOfRecordBySecond"></param>
+        /// <param name="numberofRecordByFirst"></param>
+        /// <param name="indexMaxByFirst"></param>
+        /// <returns></returns>
         public static int[] getMaxContigousArrayForSecondPerson(int[] A, int numberOfRecordBySecond,int numberofRecordByFirst,int indexMaxByFirst)
         {
             int tempMax = 0;
             int actualMax = 0;
             int indexMaxFound = 0;
 
+            //Checking if need to pick plants before and after the index get from first person.
             bool checkbeforeIndexLength = false;
             if (!(indexMaxByFirst - numberOfRecordBySecond >= 0))
             {
