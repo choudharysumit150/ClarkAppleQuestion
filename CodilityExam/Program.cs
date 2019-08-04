@@ -11,8 +11,8 @@ namespace CodilityExam
         static void Main(string[] args)
         {
             Console.WriteLine("Codility Clark Test Started..");
-            int[] array = {5,2,6,8,1,7 };
-            int aliceTree = 3;
+            int[] array = { 10, 19, 15 };
+            int aliceTree = 2;
             int bobtrees = 2;
             int result = Solution.solution(array,aliceTree,bobtrees);
             Console.WriteLine("Maximum Apples can be collected :" + result);
